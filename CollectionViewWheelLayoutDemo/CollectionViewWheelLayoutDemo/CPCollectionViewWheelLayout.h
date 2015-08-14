@@ -14,7 +14,9 @@ typedef enum : NSUInteger {
     CPWheelLayoutLeftTop,
     CPWheelLayoutRightTop,
     CPWheelLayoutLeftCenter,
-    CPWheelLayoutRightCenter
+    CPWheelLayoutRightCenter,
+    CPWheelLayoutTopCenter,
+    CPWheelLayoutBottomCenter,
 } CPWheelLayoutType;
 
 @interface CPCollectionViewWheelLayout : UICollectionViewLayout

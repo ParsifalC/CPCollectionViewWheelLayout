@@ -162,6 +162,34 @@
             }
             break;
         }
+        case CPWheelLayoutTopCenter:
+        {
+            attributes.center =
+            CGPointMake(self.collectionView.bounds.size.width/2,
+                        self.collectionView.contentOffset.y+self.cellSize.width/2);
+            angle = visibleCellIndex*self.angular/180*M_PI;
+            
+            if (angle <= (M_PI+2*angleOffset+self.angular/180) && angle >= (0-angleOffset)) {
+                attributes.hidden = NO;
+                translation = CGAffineTransformMakeTranslation(-cos(angle)*self.radius,
+                                                               (sin(angle)*self.radius));
+            }
+            break;
+        }
+        case CPWheelLayoutBottomCenter:
+        {
+            attributes.center =
+            CGPointMake(self.collectionView.bounds.size.width/2,
+                        self.collectionView.contentOffset.y+self.collectionView.bounds.size.height-self.cellSize.height/2);
+            angle = visibleCellIndex*self.angular/180*M_PI;
+            
+            if (angle <= (M_PI+2*angleOffset+self.angular/180) && angle >= (0-angleOffset)) {
+                attributes.hidden = NO;
+                translation = CGAffineTransformMakeTranslation(-cos(angle)*self.radius,
+                                                               (-sin(angle)*self.radius));
+            }
+            break;
+        }
         default:
         {
             break;
@@ -191,7 +219,11 @@
 - (CGSize)collectionViewContentSize
 {
     CGFloat visibleCellCount = 0;
-    if (self.layoutType == CPWheelLayoutLeftCenter || self.layoutType == CPWheelLayoutRightCenter) {
+    if (self.layoutType == CPWheelLayoutLeftCenter ||
+        self.layoutType == CPWheelLayoutRightCenter ||
+        self.layoutType == CPWheelLayoutBottomCenter ||
+        self.layoutType == CPWheelLayoutTopCenter) {
+        
         visibleCellCount = 180/self.angular+1;
         return CGSizeMake(self.collectionView.bounds.size.width,
                           self.collectionView.bounds.size.height+(self.cellCount-visibleCellCount)*self.cellSize.height+self.contentHeightPadding);
