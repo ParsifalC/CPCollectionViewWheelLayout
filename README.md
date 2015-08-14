@@ -1,13 +1,33 @@
 # CPCollectionViewWheelLayout
 An interested wheel layout of collection view.
 
-##OverView
+##Overview
 <p align="center"><img src="https://github.com/mingweizhang/CPCollectionViewWheelLayout/blob/master/CollectionViewWheelLayoutDemo/Demo.gif?raw=true"/></p>
 
 ##Requirements
 iOS7.0 or later.
 ##Installation
-add 'CPCollectionViewWheelLayout.h' and 'CPCollectionViewWheelLayout.m' to your project.
+####CocoaPods:
+```
+pod 'CPCollectionViewWheelLayout', '~> 1.0.0'
+```
+
+if you got the error below when install:
+
+
+```
+Unable to find a specification for `CPCollectionViewWheelLayout (~> 1.0.0)`
+```
+try this command to update your master pod repo
+
+```
+pod setup
+```
+
+####Manually
+1.clone this repo;
+
+2.add the source files --'CPCollectionViewWheelLayout.h' and 'CPCollectionViewWheelLayout.m' to your project.
 ##Usage
 ```  
     CPCollectionViewWheelLayout *wheelLayout =
