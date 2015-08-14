@@ -65,7 +65,9 @@
                         @"CPWheelLayoutLeftTop",
                         @"CPWheelLayoutRightTop",
                         @"CPWheelLayoutLeftCenter",
-                        @"CPWheelLayoutRightCenter"];
+                        @"CPWheelLayoutRightCenter",
+                        @"CPWheelLayoutTopCenter",
+                        @"CPWheelLayoutBottomCenter"];
     }
     
     return _titleArray;

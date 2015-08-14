@@ -54,8 +54,15 @@
 #pragma mark - getter
 - (UICollectionView *)collectionView
 {
-    CPCollectionViewWheelLayout *wheelLayout = [[CPCollectionViewWheelLayout alloc] initWithRadius:self.view.bounds.size.width/1.8
-                                                                                          cellSize:CGSizeMake(60, 60)
+    CGFloat radius = 0;
+    if (self.layoutType == CPWheelLayoutTopCenter || self.layoutType == CPWheelLayoutBottomCenter) {
+        radius = self.view.bounds.size.width*0.4;
+    } else {
+        radius = self.view.bounds.size.width*0.6;
+    }
+    
+    CPCollectionViewWheelLayout *wheelLayout = [[CPCollectionViewWheelLayout alloc] initWithRadius:radius
+                                                                                          cellSize:CGSizeMake(40, 40)
                                                                                            angular:20
                                                                                           fadeAway:NO
                                                                                         layoutType:self.layoutType];
