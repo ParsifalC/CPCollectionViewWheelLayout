@@ -24,7 +24,7 @@ try this command to update your master pod repo
 pod setup
 ```
 
-####Manually
+####Manually:
 1.clone this repo;
 
 2.add the source files --'CPCollectionViewWheelLayout.h' and 'CPCollectionViewWheelLayout.m' to your project.
