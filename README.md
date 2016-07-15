@@ -1,5 +1,5 @@
 # CPCollectionViewWheelLayout
-An interested wheel layout of collection view.
+An interesting wheel layout of collection view.
 
 ##Overview
 <p align="center"><img src="https://github.com/mingweizhang/CPCollectionViewWheelLayout/blob/master/CollectionViewWheelLayoutDemo/Demo.gif?raw=true"/></p>
@@ -12,7 +12,7 @@ iOS7.0 or later.
 pod 'CPCollectionViewWheelLayout', '~> 1.0.0'
 ```
 
-if you got the error below when install:
+if you got the error below when installing:
 
 
 ```
