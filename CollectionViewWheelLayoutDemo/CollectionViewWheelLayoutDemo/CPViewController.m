@@ -40,8 +40,9 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    CPCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([CPCollectionViewCell class])
-                                                                           forIndexPath:indexPath];
+    CPCollectionViewCell *cell =
+    [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([CPCollectionViewCell class])
+                                              forIndexPath:indexPath];
     cell.textLabel.text = @(indexPath.row).stringValue;
     return cell;
 }
@@ -54,20 +55,24 @@
 #pragma mark - getter
 - (UICollectionView *)collectionView
 {
+    CGSize viewSize = self.view.bounds.size;
     CGFloat radius = 0;
     if (self.layoutType == CPWheelLayoutTopCenter || self.layoutType == CPWheelLayoutBottomCenter) {
-        radius = self.view.bounds.size.width*0.4;
+        radius = viewSize.width*0.4;
     } else {
-        radius = self.view.bounds.size.width*0.6;
+        radius = viewSize.width*0.6;
     }
     
-    CPCollectionViewWheelLayout *wheelLayout = [[CPCollectionViewWheelLayout alloc] initWithRadius:radius
-                                                                                          cellSize:CGSizeMake(40, 40)
-                                                                                           angular:20
-                                                                                          fadeAway:NO
-                                                                                        layoutType:self.layoutType];
+    CPCollectionViewWheelLayout *wheelLayout =
+    [[CPCollectionViewWheelLayout alloc] initWithRadius:radius
+                                               cellSize:CGSizeMake(40, 40)
+                                                angular:20
+                                               fadeAway:NO
+                                             layoutType:self.layoutType];
     
-    UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 64, self.view.bounds.size.width, self.view.bounds.size.height-64)
+    CGRect frame = CGRectMake(0, 64, viewSize.width, viewSize.height-64);
+    
+    UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:frame
                                                           collectionViewLayout:wheelLayout];
     collectionView.showsVerticalScrollIndicator = NO;
     collectionView.showsVerticalScrollIndicator = NO;

@@ -33,8 +33,9 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([UITableViewCell class])
-                                                            forIndexPath:indexPath];
+    UITableViewCell *cell =
+    [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([UITableViewCell class])
+                                    forIndexPath:indexPath];
     cell.textLabel.text = self.titleArray[indexPath.row];
     return cell;
 }
