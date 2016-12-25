@@ -67,26 +67,32 @@
 
 - (UICollectionViewLayoutAttributes *)layoutAttributesForItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    CGSize viewSize = self.collectionView.bounds.size;
+    CGSize cellSize = self.cellSize;
+    CGPoint contentOffset = self.collectionView.contentOffset;
     CGFloat visibleCellIndex = indexPath.item-self.invisibleCellCount;//calculate new index->visible index
     
-    UICollectionViewLayoutAttributes *attributes = [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:indexPath];
-    attributes.size = self.cellSize;
+    UICollectionViewLayoutAttributes *attributes =
+    [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:indexPath];
+    attributes.size = cellSize;
     attributes.hidden = YES;
     CGFloat angle = self.angular/90*visibleCellIndex*M_PI_2;
-    CGFloat angleOffset = asin(self.cellSize.width/self.radius);
+    CGFloat angleOffset = asin(cellSize.width/self.radius);
     CGAffineTransform translation = CGAffineTransformIdentity;
-
+    
     switch (self.layoutType) {
         case CPWheelLayoutLeftBottom:
         {
             attributes.center =
-            CGPointMake(self.cellSize.width/2,
-                        self.collectionView.contentOffset.y+self.collectionView.bounds.size.height-self.cellSize.height/2);
+            CGPointMake(cellSize.width/2,
+                        contentOffset.y+viewSize.height-cellSize.height/2);
             
-            if (angle <= (M_PI_2+2*angleOffset+self.angular/90) && angle >= (0-angleOffset)) {
+            if (angle <= (M_PI_2+2*angleOffset+self.angular/90) && angle >= (0-angleOffset))
+            {
                 attributes.hidden = NO;
-                translation = CGAffineTransformMakeTranslation(sin(angle)*self.radius,
-                                                               -(cos(angle)*self.radius+self.cellSize.height/2));
+                translation =
+                CGAffineTransformMakeTranslation(sin(angle)*self.radius,
+                                                 -(cos(angle)*self.radius+cellSize.height/2));
             }
             
             break;
@@ -94,53 +100,52 @@
         case CPWheelLayoutRightBottom:
         {
             attributes.center =
-            CGPointMake(self.collectionView.bounds.size.width-self.cellSize.width/2,
-                        self.collectionView.contentOffset.y+self.collectionView.bounds.size.height-self.cellSize.height/2);
+            CGPointMake(viewSize.width-cellSize.width/2,
+                        contentOffset.y+viewSize.height-cellSize.height/2);
             
-            if (angle <= (M_PI_2+2*angleOffset+self.angular/90) && angle >= (0-angleOffset)) {
+            if (angle <= (M_PI_2+2*angleOffset+self.angular/90) && angle >= (0-angleOffset))
+            {
                 attributes.hidden = NO;
-                translation = CGAffineTransformMakeTranslation(-sin(angle)*self.radius,
-                                                               -(cos(angle)*self.radius+self.cellSize.height/2));
+                translation =
+                CGAffineTransformMakeTranslation(-sin(angle)*self.radius,
+                                                 -(cos(angle)*self.radius+cellSize.height/2));
             }
             
             break;
         }
         case CPWheelLayoutLeftTop:
         {
-            attributes.center =
-            CGPointMake(self.cellSize.width/2,
-                        self.collectionView.contentOffset.y);
+            attributes.center = CGPointMake(cellSize.width/2, contentOffset.y);
             
-            if (angle <= (M_PI_2+2*angleOffset+self.angular/90) && angle >= (0-angleOffset)) {
+            if (angle <= (M_PI_2+2*angleOffset+self.angular/90) && angle >= (0-angleOffset))
+            {
                 attributes.hidden = NO;
                 translation = CGAffineTransformMakeTranslation(cos(angle)*self.radius,
-                                                               (sin(angle)*self.radius+self.cellSize.height/2));
+                                                               (sin(angle)*self.radius+cellSize.height/2));
             }
 
             break;
         }
         case CPWheelLayoutRightTop:
         {
-            attributes.center =
-            CGPointMake(self.collectionView.bounds.size.width-self.cellSize.width/2,
-                        self.collectionView.contentOffset.y);
+            attributes.center = CGPointMake(viewSize.width-cellSize.width/2, contentOffset.y);
             
-            if (angle <= (M_PI_2+2*angleOffset+self.angular/90) && angle >= (0-angleOffset)) {
+            if (angle <= (M_PI_2+2*angleOffset+self.angular/90) && angle >= (0-angleOffset))
+            {
                 attributes.hidden = NO;
                 translation = CGAffineTransformMakeTranslation(-cos(angle)*self.radius,
-                                                               (sin(angle)*self.radius+self.cellSize.height/2));
+                                                               (sin(angle)*self.radius+cellSize.height/2));
             }
             
             break;
         }
         case CPWheelLayoutLeftCenter:
         {
-            attributes.center =
-            CGPointMake(self.cellSize.width/2,
-                        self.collectionView.contentOffset.y+self.collectionView.bounds.size.height/2);
+            attributes.center = CGPointMake(cellSize.width/2, contentOffset.y+viewSize.height/2);
             angle = visibleCellIndex*self.angular/180*M_PI;
             
-            if (angle <= (M_PI+2*angleOffset+self.angular/180) && angle >= (0-angleOffset)) {
+            if (angle <= (M_PI+2*angleOffset+self.angular/180) && angle >= (0-angleOffset))
+            {
                 attributes.hidden = NO;
                 translation = CGAffineTransformMakeTranslation(sin(angle)*self.radius,
                                                                (-cos(angle)*self.radius));
@@ -151,11 +156,11 @@
         case CPWheelLayoutRightCenter:
         {
             attributes.center =
-            CGPointMake(self.collectionView.bounds.size.width-self.cellSize.width/2,
-                        self.collectionView.contentOffset.y+self.collectionView.bounds.size.height/2);
+            CGPointMake(viewSize.width-cellSize.width/2, contentOffset.y+viewSize.height/2);
             angle = visibleCellIndex*self.angular/180*M_PI;
             
-            if (angle <= (M_PI+2*angleOffset+self.angular/180) && angle >= (0-angleOffset)) {
+            if (angle <= (M_PI+2*angleOffset+self.angular/180) && angle >= (0-angleOffset))
+            {
                 attributes.hidden = NO;
                 translation = CGAffineTransformMakeTranslation(-sin(angle)*self.radius,
                                                                (-cos(angle)*self.radius));
@@ -164,12 +169,11 @@
         }
         case CPWheelLayoutTopCenter:
         {
-            attributes.center =
-            CGPointMake(self.collectionView.bounds.size.width/2,
-                        self.collectionView.contentOffset.y+self.cellSize.width/2);
+            attributes.center = CGPointMake(viewSize.width/2, contentOffset.y+cellSize.width/2);
             angle = visibleCellIndex*self.angular/180*M_PI;
             
-            if (angle <= (M_PI+2*angleOffset+self.angular/180) && angle >= (0-angleOffset)) {
+            if (angle <= (M_PI+2*angleOffset+self.angular/180) && angle >= (0-angleOffset))
+            {
                 attributes.hidden = NO;
                 translation = CGAffineTransformMakeTranslation(-cos(angle)*self.radius,
                                                                (sin(angle)*self.radius));
@@ -179,11 +183,11 @@
         case CPWheelLayoutBottomCenter:
         {
             attributes.center =
-            CGPointMake(self.collectionView.bounds.size.width/2,
-                        self.collectionView.contentOffset.y+self.collectionView.bounds.size.height-self.cellSize.height/2);
+            CGPointMake(viewSize.width/2, contentOffset.y+viewSize.height-cellSize.height/2);
             angle = visibleCellIndex*self.angular/180*M_PI;
             
-            if (angle <= (M_PI+2*angleOffset+self.angular/180) && angle >= (0-angleOffset)) {
+            if (angle <= (M_PI+2*angleOffset+self.angular/180) && angle >= (0-angleOffset))
+            {
                 attributes.hidden = NO;
                 translation = CGAffineTransformMakeTranslation(-cos(angle)*self.radius,
                                                                (-sin(angle)*self.radius));
@@ -218,6 +222,7 @@
 
 - (CGSize)collectionViewContentSize
 {
+    CGSize viewSize = self.collectionView.bounds.size;
     CGFloat visibleCellCount = 0;
     if (self.layoutType == CPWheelLayoutLeftCenter ||
         self.layoutType == CPWheelLayoutRightCenter ||
@@ -225,12 +230,12 @@
         self.layoutType == CPWheelLayoutTopCenter) {
         
         visibleCellCount = 180/self.angular+1;
-        return CGSizeMake(self.collectionView.bounds.size.width,
-                          self.collectionView.bounds.size.height+(self.cellCount-visibleCellCount)*self.cellSize.height+self.contentHeightPadding);
+        return CGSizeMake(viewSize.width,
+                          viewSize.height+(self.cellCount-visibleCellCount)*self.cellSize.height+self.contentHeightPadding);
     } else {
         visibleCellCount = 90/self.angular+1;
-        return CGSizeMake(self.collectionView.bounds.size.width,
-                          self.collectionView.bounds.size.height+(self.cellCount-visibleCellCount)*self.cellSize.height+self.contentHeightPadding);
+        return CGSizeMake(viewSize.width,
+                          viewSize.height+(self.cellCount-visibleCellCount)*self.cellSize.height+self.contentHeightPadding);
     }
 }
 @end
