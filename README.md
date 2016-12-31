@@ -1,6 +1,6 @@
 # CPCollectionViewWheelLayout
 An interesting wheel layout of collection view.
-
+[Here's the Swift version](https://github.com/mingweizhang/CPCollectionViewWheelLayout-Swift)
 ##Overview
 <p align="center"><img src="https://github.com/mingweizhang/CPCollectionViewWheelLayout/blob/master/CollectionViewWheelLayoutDemo/Demo.gif?raw=true"/></p>
 
