@@ -1,5 +1,5 @@
 PODS:
-  - CPCollectionViewWheelLayout (1.0.1)
+  - CPCollectionViewWheelLayout (1.0.2)
 
 DEPENDENCIES:
   - CPCollectionViewWheelLayout (from `../`)
@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  CPCollectionViewWheelLayout: a4723d901b7874d5ed02e1f3ba09299c3aab45c9
+  CPCollectionViewWheelLayout: bc10539ca338046c20218a360c944fe740b54efe
 
 PODFILE CHECKSUM: ef84049bd44c524e795d53358d42985684938240
 
