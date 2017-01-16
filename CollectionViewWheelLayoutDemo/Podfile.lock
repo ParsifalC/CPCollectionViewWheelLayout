@@ -1,0 +1,16 @@
+PODS:
+  - CPCollectionViewWheelLayout (1.0.1)
+
+DEPENDENCIES:
+  - CPCollectionViewWheelLayout (from `../`)
+
+EXTERNAL SOURCES:
+  CPCollectionViewWheelLayout:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  CPCollectionViewWheelLayout: a4723d901b7874d5ed02e1f3ba09299c3aab45c9
+
+PODFILE CHECKSUM: ef84049bd44c524e795d53358d42985684938240
+
+COCOAPODS: 1.1.1

@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "CPCollectionViewWheelLayout.h"
+#import <CPCollectionViewWheelLayout.h>
 
 @interface CPViewController : UIViewController
 + (CPViewController *)viewControllerWithCollectionViewLayoutType:(CPWheelLayoutType)type;
