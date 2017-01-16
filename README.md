@@ -2,14 +2,16 @@
 An interesting wheel layout of collection view.
 [Here's the Swift version](https://github.com/mingweizhang/CPCollectionViewWheelLayout-Swift)
 ##Overview
-<p align="center"><img src="https://github.com/mingweizhang/CPCollectionViewWheelLayout/blob/master/CollectionViewWheelLayoutDemo/Demo.gif?raw=true"/></p>
+<p align="center"><img src="https://github.com/Parsifal/CPCollectionViewWheelLayout/blob/master/CollectionViewWheelLayoutDemo/Demo.gif?raw=true"/></p>
 
 ##Requirements
 iOS7.0 or later.
-##Installation
-####CocoaPods:
+##Installation    
+
+####CocoaPods:    
+
 ```
-pod 'CPCollectionViewWheelLayout', '~> 1.0.0'
+pod 'CPCollectionViewWheelLayout', '~> 1.0.2'
 ```
 
 if you got the error below when installing:
