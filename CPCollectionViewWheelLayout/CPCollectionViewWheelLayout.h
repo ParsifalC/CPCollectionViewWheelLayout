@@ -7,6 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+//! Project version number for CPCollectionViewWheelLayout.
+FOUNDATION_EXPORT double CPCollectionViewWheelLayoutVersionNumber;
+
+//! Project version string for CPCollectionViewWheelLayout.
+FOUNDATION_EXPORT const unsigned char CPCollectionViewWheelLayoutVersionString[];
 
 typedef enum : NSUInteger {
     CPWheelLayoutLeftBottom,
