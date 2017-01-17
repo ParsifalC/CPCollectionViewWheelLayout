@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "CPCollectionViewWheelLayout"
-  s.version      = "1.0.2"
+  s.version      = "1.0.3"
   s.summary      = "An interested wheel layout of collection view."
 
   s.description  = <<-DESC
