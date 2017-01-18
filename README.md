@@ -43,16 +43,20 @@ github "ParsifalC/CPCollectionViewWheelLayout"
 ```
 
 ## Usage
-```  
+```Objective-C  
     CPCollectionViewWheelLayout *wheelLayout =
     [[CPCollectionViewWheelLayout alloc] initWithRadius:self.view.bounds.size.width/1.8
                                                cellSize:CGSizeMake(60, 60)
                                                 angular:20
-											    fadeAway:NO
-											  layoutType:self.layoutType];
+					       fadeAway:NO
+					     layoutType:self.layoutType];
     
     UICollectionView *collectionView = 
-    [[UICollectionView alloc] initWithFrame:CGRectMake(0, 64, self.view.bounds.size.width, self.view.bounds.size.height-64) collectionViewLayout:wheelLayout];
+    [[UICollectionView alloc] initWithFrame:CGRectMake(0,
+    						      64, 
+						      self.view.bounds.size.width, 
+						      self.view.bounds.size.height-64)
+		       collectionViewLayout:wheelLayout];
     collectionView.showsVerticalScrollIndicator = NO;
     collectionView.showsVerticalScrollIndicator = NO;
     collectionView.backgroundColor = [UIColor clearColor];
